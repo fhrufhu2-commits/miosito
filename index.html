@@ -1,30 +1,142 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Il mio sito</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #111;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.5rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzeria Bella Vita | La vera pizza napoletana</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div>
-    <h1>Benvenuto sul mio sito</h1>
-    <p>Presto qui ci sarà qualcosa di fantastico.</p>
-  </div>
+    <!-- Particelle di sfondo -->
+    <div class="particles" id="particles"></div>
+
+    <!-- ========== HOME ========== -->
+    <section id="home" class="page active">
+        <div class="home-content">
+            <div class="logo-glow">🍕</div>
+            <h1 class="title">Benvenuto</h1>
+            <h2 class="subtitle">Pizzeria Bella Vita</h2>
+            <p class="tagline">La vera pizza napoletana cotta nel forno a legna</p>
+            
+            <div class="buttons">
+                <button class="btn btn-menu" onclick="showPage('menu')">
+                    <span>Menu</span>
+                </button>
+                <button class="btn btn-contact" onclick="showPage('contact')">
+                    <span>Contattaci</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="scroll-hint">Scorri o clicca</div>
+    </section>
+
+    <!-- ========== MENU ========== -->
+    <section id="menu" class="page">
+        <div class="page-header">
+            <button class="back-btn" onclick="showPage('home')">← Torna indietro</button>
+            <h1>Il Nostro Menu</h1>
+            <p>Pizze fatte a mano con ingredienti di prima qualità</p>
+        </div>
+
+        <div class="menu-grid">
+            <!-- Pizza 1 -->
+            <div class="pizza-card" style="--delay: 0.1s">
+                <div class="pizza-emoji">🍕</div>
+                <h3>Margherita</h3>
+                <p>Pomodoro San Marzano, mozzarella di bufala, basilico fresco, olio EVO</p>
+                <div class="price">€ 7,50</div>
+            </div>
+
+            <!-- Pizza 2 -->
+            <div class="pizza-card" style="--delay: 0.2s">
+                <div class="pizza-emoji">🌶️</div>
+                <h3>Diavola</h3>
+                <p>Pomodoro, mozzarella, salame piccante, peperoncino fresco</p>
+                <div class="price">€ 9,50</div>
+            </div>
+
+            <!-- Pizza 3 -->
+            <div class="pizza-card" style="--delay: 0.3s">
+                <div class="pizza-emoji">🧀</div>
+                <h3>Quattro Formaggi</h3>
+                <p>Mozzarella, gorgonzola, fontina, parmigiano reggiano</p>
+                <div class="price">€ 11,00</div>
+            </div>
+
+            <!-- Pizza 4 -->
+            <div class="pizza-card" style="--delay: 0.4s">
+                <div class="pizza-emoji">🍄</div>
+                <h3>Prosciutto e Funghi</h3>
+                <p>Pomodoro, mozzarella, prosciutto cotto, funghi champignon</p>
+                <div class="price">€ 10,00</div>
+            </div>
+
+            <!-- Pizza 5 -->
+            <div class="pizza-card" style="--delay: 0.5s">
+                <div class="pizza-emoji">🌿</div>
+                <h3>Capricciosa</h3>
+                <p>Pomodoro, mozzarella, prosciutto, funghi, carciofi, olive</p>
+                <div class="price">€ 11,50</div>
+            </div>
+
+            <!-- Pizza 6 -->
+            <div class="pizza-card" style="--delay: 0.6s">
+                <div class="pizza-emoji">🔥</div>
+                <h3>Speciale della Casa</h3>
+                <p>Pomodoro, mozzarella di bufala, salsiccia, friarielli, provola</p>
+                <div class="price">€ 13,00</div>
+            </div>
+
+            <!-- Pizza 7 -->
+            <div class="pizza-card" style="--delay: 0.7s">
+                <div class="pizza-emoji">🥬</div>
+                <h3>Vegetariana</h3>
+                <p>Pomodoro, mozzarella, zucchine, melanzane, peperoni, olive</p>
+                <div class="price">€ 10,50</div>
+            </div>
+
+            <!-- Pizza 8 -->
+            <div class="pizza-card" style="--delay: 0.8s">
+                <div class="pizza-emoji">🥩</div>
+                <h3>Salsiccia e Friarielli</h3>
+                <p>Base bianca, salsiccia di maiale, friarielli napoletani, provola</p>
+                <div class="price">€ 12,00</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTATTI ========== -->
+    <section id="contact" class="page">
+        <div class="page-header">
+            <button class="back-btn" onclick="showPage('home')">← Torna indietro</button>
+            <h1>Contattaci</h1>
+            <p>Siamo qui per te. Scegli come preferisci parlarci</p>
+        </div>
+
+        <div class="contact-options">
+            <a href="tel:+391234567890" class="contact-card phone">
+                <div class="contact-icon">📞</div>
+                <h3>Chiamaci</h3>
+                <p>+39 123 456 7890</p>
+                <span class="contact-action">Tocca per chiamare</span>
+            </a>
+
+            <a href="mailto:info@pizzeriabellavita.it" class="contact-card email">
+                <div class="contact-icon">✉️</div>
+                <h3>Scrivici</h3>
+                <p>info@pizzeriabellavita.it</p>
+                <span class="contact-action">Tocca per inviare email</span>
+            </a>
+        </div>
+
+        <div class="address">
+            <p>📍 Via della Pizza 42, Napoli</p>
+            <p>Aperti tutti i giorni dalle 12:00 alle 23:30</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
