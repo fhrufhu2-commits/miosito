@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzeria Bella Vita | Pizza Napoletana d'Autore</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sfondo animato -->
+    <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- ========== HOME ========== -->
+    <section id="home" class="page active">
+        <div class="home-wrapper">
+            <div class="logo">🍕</div>
+            
+            <h1 class="main-title">Benvenuto</h1>
+            <h2 class="brand">Pizzeria Bella Vita</h2>
+            
+            <!-- Testo dinamico che cambia -->
+            <div class="dynamic-text">
+                <span id="rotating-text">Cotta nel forno a legna a 450°</span>
+            </div>
+
+            <div class="cta-buttons">
+                <button class="btn btn-menu" onclick="goTo('menu')">
+                    <span>Menu</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn btn-contact" onclick="goTo('contact')">
+                    <span>Contattaci</span>
+                    <div class="btn-glow"></div>
+                </button>
