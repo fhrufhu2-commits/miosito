@@ -1,67 +1,81 @@
-// Transizione tra le pagine
-function showPage(pageId) {
-    const pages = document.querySelectorAll('.page');
-    
-    pages.forEach(page => {
-        page.classList.remove('active');
+// Cambio pagina SOLO tramite bottoni
+function goTo(pageId) {
+    document.querySelectorAll('.page').forEach(p => {
+        p.classList.remove('active');
     });
-    
-    // Piccolo delay per far partire l'animazione in modo fluido
+
     setTimeout(() => {
         document.getElementById(pageId).classList.add('active');
-        
-        // Scroll in alto quando si cambia pagina
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 50);
+    }, 80);
 }
 
-// Crea particelle leggere in movimento
+// Testo dinamico che cambia
+const phrases = [
+    "Cotta nel forno a legna a 450°",
+    "Impasto a lunga lievitazione 48h",
+    "Ingredienti freschi ogni giorno",
+    "La vera pizza napoletana",
+    "Fumo, fuoco e passione"
+];
+
+let index = 0;
+const textEl = document.getElementById('rotating-text');
+
+setInterval(() => {
+    textEl.style.opacity = '0';
+    textEl.style.transform = 'translateY(15px)';
+    
+    setTimeout(() => {
+        index = (index + 1) % phrases.length;
+        textEl.textContent = phrases[index];
+        textEl.style.opacity = '1';
+        textEl.style.transform = 'translateY(0)';
+    }, 400);
+}, 3200);
+
+// Particelle colorate
 function createParticles() {
     const container = document.getElementById('particles');
-    
-    for (let i = 0; i < 25; i++) {
-        const particle = document.createElement('div');
-        particle.style.cssText = `
+    const colors = ['#ff3d00', '#ffab00', '#00c853', '#ff6d00', '#2979ff'];
+
+    for (let i = 0; i < 30; i++) {
+        const p = document.createElement('div');
+        const size = Math.random() * 5 + 2;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        
+        p.style.cssText = `
             position: absolute;
-            width: ${Math.random() * 4 + 2}px;
-            height: ${Math.random() * 4 + 2}px;
-            background: rgba(255, 140, 66, ${Math.random() * 0.4 + 0.1});
+            width: ${size}px;
+            height: ${size}px;
+            background: ${color};
             border-radius: 50%;
             top: ${Math.random() * 100}%;
             left: ${Math.random() * 100}%;
-            animation: particleFloat ${Math.random() * 15 + 10}s linear infinite;
-            animation-delay: -${Math.random() * 10}s;
+            opacity: ${Math.random() * 0.5 + 0.15};
+            animation: floatParticle ${Math.random() * 18 + 12}s linear infinite;
+            animation-delay: -${Math.random() * 12}s;
+            box-shadow: 0 0 10px ${color};
         `;
-        container.appendChild(particle);
+        container.appendChild(p);
     }
 }
 
-// Aggiungi l'animazione CSS delle particelle dinamicamente
+// CSS animazione particelle
 const style = document.createElement('style');
 style.textContent = `
-    @keyframes particleFloat {
-        0% {
-            transform: translateY(0) translateX(0);
-            opacity: 0;
-        }
-        10% {
-            opacity: 1;
-        }
-        90% {
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-100vh) translateX(${Math.random() * 100 - 50}px);
-            opacity: 0;
-        }
+    @keyframes floatParticle {
+        0% { transform: translateY(0) translateX(0); opacity: 0; }
+        10% { opacity: 0.6; }
+        90% { opacity: 0.6; }
+        100% { transform: translateY(-110vh) translateX(${Math.random() * 80 - 40}px); opacity: 0; }
     }
 `;
 document.head.appendChild(style);
 
-// Avvia le particelle
 createParticles();
 
-// Piccolo effetto di entrata all'avvio
+// Avvio
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('home').classList.add('active');
 });
